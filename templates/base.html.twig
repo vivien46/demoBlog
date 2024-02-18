@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<link
+		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>💬</text></svg>">
+		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+		{% block stylesheets %}
+			<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' integrity='sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==' crossorigin='anonymous'/>
+			<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css' integrity='sha512-t4GWSVZO1eC8BM339Xd7Uphw5s17a86tIZIj8qRxhnKub6WoyhnrxeCIMeAqBPgdZGlCcG2PrZjMc+Wr78+5Xg==' crossorigin='anonymous'/>
+			<style>
+				@import url("https://fonts.googleapis.com/css?family=Roboto:wght@400;500;700 &display=swap%27");
+				{
+					font-family: "Roboto", sans-serif;
+				}
+				td {
+					vertical-align: middle;
+					text-align: center;
+				}
+			</style>
+
+		{% endblock %}
+
+
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="{{ path('app_blog') }}">DemoBlog</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navSupportedContent" aria-controls="navSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="{{ path('app_blog') }}">
+								<i class="fa-solid fa-house-chimney" aria-hidden="true"></i>
+								Accueil</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" aria-current="page" href="{{ path('app_blog') }}">
+								<i class="fas fa-rectangle-list" aria-hidden="true"></i>
+								Liste des Articles</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" aria-current="page" href="{{ path('blog_create')}}">
+								<i class="fas fa-plus" aria-hidden="true"></i>
+								Ajouter un article</a>
+						</li>
+						{# <li class="nav-item">
+						                            <a class="nav-link" aria-current="page" href="">Gestion des contenus </a>
+						                        </li> #}
+					</ul>
+					{# <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+					                        <li class="nav-item">
+					                            <a class="nav-link" aria-current="page" href=" "> <i class="fas fa-right-from-bracket" aria-hidden="true"></i> Se deconnecter</a>
+					                        </li>
+					                        <li class="nav-item">
+					                            <a class="nav-link" aria-current="page" href=" "><i class="fas fa-user-plus" aria-hidden="true"></i> Inscription</a>
+					                        </li>
+					                        <li class="nav-item">
+					                            <a class="nav-link" aria-current="page" href=" "><i class="fas fa-unlock" aria-hidden="true"></i> Connexion</a>
+					                        </li>
+					                    </ul> #}
+				</div>
+			</div>
+		</nav>
+
+		<div class="container my-5" style="min-height: 90vh;"> {% block body %}{% endblock %}
+			</div>
+
+			<footer class="container-fluid bg-dark d-flex justify-content-center align-items-center" style="height: 50px;">
+				<div class="text-light">
+					<i class="fas fa-copyright" aria-hidden="true"></i>
+					{{ "now" | date('Y') }}
+					- DemoBlog - All rights Reserved</div>
+			</footer>
+			{% block javascripts %}
+				<script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js' integrity='sha512-VK2zcvntEufaimc+efOYi622VN5ZacdnufnmX7zIhCPmjhKnOi9ZDMtg1/ug5l183f19gG1/cBstPO4D8N/Img==' crossorigin='anonymous'></script>
+			{% endblock %}
+		</body>
+	</html>

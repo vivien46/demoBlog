@@ -1,0 +1,51 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+	<div class="container text-center mt-5">
+		<h1>{{ article.title }}</h1>
+		<div class="card mt-5" style="width:40rem; margin: 0 auto">
+			<img src="{{ article.image }}" class="card-img-top" alt="...">
+			<div class="card-body">
+				<p class="card-text">{{ article.content | raw }}</p>
+				<div class="card-footer">
+					<table class="table table-bordered">
+						<tbody>
+							<tr style="background: #8900E5; color: white;">
+								<th scope="col">Date de Publication</th>
+								<th scope="col">Catégorie</th>
+							</tr>
+							<tr>
+								<td>{{ article.createdAt | date('d/m/Y') }}
+								</td>
+								<td>
+									<span class="badge rounded-pill text-bg-primary">{{ article.category.title }}</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="container my-5 text-center">
+			<h2>Commentaires</h2>
+			<div class="row">
+				{% for comment in article.comments %}
+					<div class="col-md-6">
+						<div class="container my-4 border">
+							<div class="py-4">
+							{{ comment.author }}
+							(<small>{{ comment.createdAt | date('d/m/Y à H:m:s') }}</small>)
+						</div>
+						<hr>
+						<div class='border'>
+							{{ comment.content | raw }}
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+		</div>
+		</div>
+	{% endblock %}
